@@ -1,7 +1,5 @@
 package thread.waitNotify;
 /**
- * 生产者 消费者
- * @author yuhao
  *
  */
 public class Main {

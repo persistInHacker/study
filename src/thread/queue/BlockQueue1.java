@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 public class BlockQueue1 {
 
 	public static void main(String[] args) throws InterruptedException {
-		//长度为2的队列
 		ArrayBlockingQueue<Object> queue2 = new ArrayBlockingQueue<>(2);
 		queue2.add(1);
 		queue2.add(2);

@@ -19,12 +19,12 @@ class Sale1 implements Runnable{
 	@Override		
 	public void run() {
 		while (tick > 0) {
-			synchronized (Ticket1.class) {
+			//synchronized (Ticket1.class) {
 				if(tick == 0) {
 					break;
 				}
 				if (tick > 0) {
-					System.out.println(Thread.currentThread().getName()+ "卖出了第" + tick + "张票");
+					System.out.println(Thread.currentThread().getName()+ "---" + tick );
 				}
 				try {
 					Thread.sleep(100L);
@@ -32,7 +32,7 @@ class Sale1 implements Runnable{
 					e.printStackTrace();
 				}
 				tick --;
-			}
+			//}
 		}
 	}
 }
