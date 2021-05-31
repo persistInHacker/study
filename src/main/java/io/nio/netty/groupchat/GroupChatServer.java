@@ -74,7 +74,8 @@ public class GroupChatServer {
             });
 
 
-            //对关闭通道的事件进行监听
+            //对关闭通道的事件进行监听 如果缺失上述代码，则main方法所在的线程，即主线程会在执行完bind().sync()方法后，会进入finally 代码块，之前的启动的nettyserver也会随之关闭掉，整个程序都结束了
+            //让线程进入wait状态，也就是main线程暂时不会执行到finally里面，nettyserver也持续运行，如果监听到关闭事件，可以优雅的关闭通道和nettyserver
             sync.channel().closeFuture().sync();
         }finally {
             //优雅关闭

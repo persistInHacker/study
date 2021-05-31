@@ -12,7 +12,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        designModel.converter.UserConverter userConverter = new designModel.converter.UserConverter();
+       /* designModel.converter.UserConverter userConverter = new designModel.converter.UserConverter();
         designModel.converter.UserDto dtoUser = new designModel.converter.UserDto("John", "Doe", true, "whatever[at]wherever.com");
         designModel.converter.User user = userConverter.convertFromDto(dtoUser);
         System.out.println(user);
@@ -28,6 +28,6 @@ public class App {
         List<designModel.converter.UserDto> dtoEntities = userConverter.convertFromEntities(users);
         dtoEntities.stream().map(designModel.converter.UserDto::toString).forEach(System.out::println);
 
-
+*/
     }
 }
