@@ -1,4 +1,8 @@
-package main.java.designModel.chain;
+package designModel.chain;
+
+import designModel.chain.OneHandler;
+import designModel.chain.Request;
+import designModel.chain.TwoHandler;
 
 /**
  * @author yuhao
@@ -8,14 +12,14 @@ package main.java.designModel.chain;
  */
 public class KingHandler {
 
-    private RequestHandler chain;
+    private designModel.chain.RequestHandler chain;
 
     public KingHandler() {
         buildChain();
     }
 
     private void buildChain() {
-        chain = new OneHandler(new TwoHandler(new ThreeHandler(null)));
+        chain = new OneHandler(new TwoHandler(new designModel.chain.ThreeHandler(null)));
     }
 
     public void makeRequest(Request request){

@@ -1,4 +1,4 @@
-package main.java.designModel.converter;
+package designModel.converter;
 
 import java.util.Collection;
 import java.util.List;

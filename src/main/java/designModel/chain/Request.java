@@ -1,4 +1,4 @@
-package main.java.designModel.chain;
+package designModel.chain;
 
 /**
  * @author yuhao
@@ -8,21 +8,21 @@ package main.java.designModel.chain;
  */
 public class Request {
 
-    private RequestType requestType;
+    private designModel.chain.RequestType requestType;
     private String reqDesc;
     private boolean handler;
 
-    public Request(RequestType requestType, String reqDesc, boolean handler) {
+    public Request(designModel.chain.RequestType requestType, String reqDesc, boolean handler) {
         this.requestType = requestType;
         this.reqDesc = reqDesc;
         this.handler = handler;
     }
 
-    public RequestType getRequestType() {
+    public designModel.chain.RequestType getRequestType() {
         return requestType;
     }
 
-    public void setRequestType(RequestType requestType) {
+    public void setRequestType(designModel.chain.RequestType requestType) {
         this.requestType = requestType;
     }
 

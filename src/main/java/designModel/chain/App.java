@@ -1,4 +1,4 @@
-package main.java.designModel.chain;
+package designModel.chain;
 
 /**
  * @author yuhao
@@ -10,10 +10,10 @@ public class App {
 
     public static void main(String[] args) {
 
-        KingHandler kingHandler = new KingHandler();
-        kingHandler.makeRequest(new Request(RequestType.ONE , "the one" , false));
-        kingHandler.makeRequest(new Request(RequestType.TWO, "the two" , false));
-        kingHandler.makeRequest(new Request(RequestType.THREE , "the three" , false));
+        designModel.chain.KingHandler kingHandler = new designModel.chain.KingHandler();
+        kingHandler.makeRequest(new Request(designModel.chain.RequestType.ONE , "the one" , false));
+        kingHandler.makeRequest(new Request(designModel.chain.RequestType.TWO, "the two" , false));
+        kingHandler.makeRequest(new Request(designModel.chain.RequestType.THREE , "the three" , false));
 
     }
 }

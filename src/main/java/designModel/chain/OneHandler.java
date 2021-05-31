@@ -1,4 +1,4 @@
-package main.java.designModel.chain;
+package designModel.chain;
 
 /**
  * @author yuhao
@@ -6,16 +6,16 @@ package main.java.designModel.chain;
  * @date 2021/3/25 10:36
  * @since JDK1.8
  */
-public class OneHandler extends RequestHandler {
+public class OneHandler extends designModel.chain.RequestHandler {
 
 
-    public OneHandler(RequestHandler requestHandler) {
+    public OneHandler(designModel.chain.RequestHandler requestHandler) {
         super(requestHandler);
     }
 
     @Override
     public void handlerRequest(Request request) {
-        if (request.getRequestType() == RequestType.ONE) {
+        if (request.getRequestType() == designModel.chain.RequestType.ONE) {
             request.setHandler(true);
             printHandling(request);
         } else {

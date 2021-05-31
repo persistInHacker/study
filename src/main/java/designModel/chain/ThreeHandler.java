@@ -1,4 +1,4 @@
-package main.java.designModel.chain;
+package designModel.chain;
 
 /**
  * @author yuhao

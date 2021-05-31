@@ -23,13 +23,13 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<TextWebS
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         //long 唯一  short 不是唯一
-        System.out.println("handler add 被调用" + ctx.channel().id().asLongText());
-        System.out.println("handler add 被调用" + ctx.channel().id().asShortText());
+//        System.out.println("handler add 被调用" + ctx.channel().id().asLongText());
+//        System.out.println("handler add 被调用" + ctx.channel().id().asShortText());
     }
 
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("handler remove 调用 " + ctx.channel().id().asLongText());
+        //System.out.println("handler remove 调用 " + ctx.channel().id().asLongText());
     }
 
     @Override
