@@ -33,7 +33,7 @@ public class NettySimpleServer {
 
             System.out.println("服务器准备好了");
 
-            ChannelFuture sync = bootstrap.bind(8888).sync();
+            ChannelFuture sync = bootstrap.bind(9999).sync();
             sync.addListener(new ChannelFutureListener() {
                 @Override
                 public void operationComplete(ChannelFuture future) throws Exception {
