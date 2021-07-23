@@ -10,15 +10,29 @@ import java.nio.charset.Charset;
 public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 
 
+    private String str = "hello server";
+
+    {
+
+        for (int i = 0; i < 1000; i++) {
+            str += "hello world";
+        }
+
+    }
+
     /**
      * 当通道就绪触发
      */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
 
-        System.out.println("client ctx : " + ctx);
 
-        ctx.writeAndFlush(Unpooled.copiedBuffer("hello server" , Charset.defaultCharset()));
+
+       while (true){
+
+           ctx.writeAndFlush(Unpooled.copiedBuffer(str , Charset.defaultCharset()));
+           Thread.sleep(1L);
+       }
 
     }
 

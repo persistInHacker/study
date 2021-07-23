@@ -17,7 +17,15 @@ public class NettyClient {
         //客户端需要一个事件循环组
         EventLoopGroup eventExecutors = new NioEventLoopGroup();
 
-        try{
+        for (int i = 0; i < 10_000; i++) {
+            link(eventExecutors);
+            Thread.sleep(1);
+        }
+
+    }
+
+    private static void link(EventLoopGroup eventExecutors) throws InterruptedException {
+       // try{
             Bootstrap bootstrap = new Bootstrap();
 
             bootstrap.group(eventExecutors)
@@ -33,10 +41,9 @@ public class NettyClient {
 
             ChannelFuture sync = bootstrap.connect("127.0.0.1", 8888).sync();
 
-            sync.channel().closeFuture().sync();
-        }finally {
-            eventExecutors.shutdownGracefully();
-        }
-
+            //sync.channel().closeFuture().sync();
+//        }finally {
+//            eventExecutors.shutdownGracefully();
+//        }
     }
 }
