@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    var socket;
+    //判断当前浏览器是否支持websocket
+    if (window.WebSocket) {
+        socket = new WebSocket("ws://localhost:8888/hello");
+        //收到服务器回送的消息
+        socket.onmessage = function (ev) {
+            let rt = document.getElementById("resp");
+            rt.value = rt.value + "\n" + ev.data;
+        }
+
+        //相当于链接开启
+        socket.onopen = function (ev) {
+            let rt = document.getElementById("resp");
+            rt.value = "链接开启";
+        }
+
+        //相当于链接关闭
+        socket.onclose = function (ev) {
+            let rt = document.getElementById("resp");
+            rt.value = rt.value + "\n" + "链接关闭";
+        }
+
+        //发送消息到服务器
+        function send(msg) {
+
+            if (!window.socket) {
+                return;
+            }
+
+            if(socket.readyState = WebSocket.OPEN){
+                socket.send(msg);
+            }else{
+                alert("链接没开启");
+            }
+
+        }
+
+    } else {
+        alert("不支持websocket")
+    }
+
+
+</script>
+
+
+<form onsubmit="return false">
+        <textarea name="msg" style="height: 300px; width: 300px;">
+        </textarea>
+
+    <input type="button" value="发送消息" onclick="send(this.form.msg.value)">
+
+    <textarea id="resp" style="height: 300px; width: 300px;">
+        </textarea>
+    <input type="button" value="清空内容" onclick="document.getElementById('resp').value = ''">
+</form>
+
+</body>
+</html>
