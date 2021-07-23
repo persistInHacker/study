@@ -7,6 +7,8 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import java.nio.charset.Charset;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -21,6 +23,8 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
     private static AtomicInteger count = new AtomicInteger();
 
+    private static Map<String , Integer> map = new ConcurrentHashMap<>();
+
     /**
      * 可以读取客户端发送的消息
      * ChannelHandlerContext 上下文对象 含有管道pipeline 通道channel 地址
@@ -31,9 +35,12 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
         int i = count.incrementAndGet();
 
-        System.out.println("server ctx : " + ctx + " c : " + i);
+       // System.out.println("server ctx : " + ctx + " c : " + i);
 
-
+        map.put(ctx.toString() , 1);
+        if(i %1000 == 0){
+            System.out.println(map.size());
+        }
 
         //这里异步执行， NIOEventLoop 的 taskQueue
        /* ctx.channel().eventLoop().execute(()->{
@@ -54,9 +61,9 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
             }
         } , 5 , TimeUnit.SECONDS);*/
 
-        ByteBuf byteBuffer = (ByteBuf) msg;
+        //ByteBuf byteBuffer = (ByteBuf) msg;
         //System.out.println("client msg : " + byteBuffer.toString(Charset.defaultCharset()));
-        System.out.println("客户端地址: " + ctx.channel().remoteAddress());
+       // System.out.println("客户端地址: " + ctx.channel().remoteAddress());
 
     }
 

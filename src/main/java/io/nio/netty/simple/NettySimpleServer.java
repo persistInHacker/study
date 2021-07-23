@@ -6,10 +6,19 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.nio.SystemResourceTools;
+
+import java.lang.management.ManagementFactory;
 
 public class NettySimpleServer {
 
     public static void main(String[] args) throws InterruptedException {
+
+
+        String pid = ManagementFactory.getRuntimeMXBean().getName().split("@")[0];
+
+        SystemResourceTools.setOpenfilesLimit(Integer.parseInt(pid) , 100_0000);
+        SystemResourceTools.getOpenfilesLimit(Integer.parseInt(pid));
 
 
         EventLoopGroup bossGroup = new NioEventLoopGroup();
