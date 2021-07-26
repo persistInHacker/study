@@ -38,9 +38,9 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
        // System.out.println("server ctx : " + ctx + " c : " + i);
 
         map.put(ctx.toString() , 1);
-        if(i %1000 == 0){
-            System.out.println(map.size());
+        if(i %100 == 0){
         }
+        System.out.println(map.size());
 
         //这里异步执行， NIOEventLoop 的 taskQueue
        /* ctx.channel().eventLoop().execute(()->{

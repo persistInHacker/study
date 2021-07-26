@@ -52,7 +52,10 @@ public class MutiClient1 {
         });
         for(int i=0; i<count;i++){
             Channel channel = bootstrap
-                    .connect(new InetSocketAddress("192.168.1.4", 7777)).channel();
+                    .connect(new InetSocketAddress("127.0.0.1", 9999)).channel();
+            if(channel == null){
+                System.out.println(i);
+            }
             channels.add(channel);
         }
 
@@ -66,7 +69,7 @@ public class MutiClient1 {
         if(count >= channels.size()){
             throw new RuntimeException("没有足够的channel");
         }
-        if(!channel.isActive()){
+        if(channel != null && !channel.isActive()){
             //重连
             reconnect(channel);
             //尝试获取下一个channel
@@ -79,7 +82,7 @@ public class MutiClient1 {
         synchronized (channel){
             int index = channels.indexOf(channel);
             channel =  bootstrap
-                    .connect(new InetSocketAddress("172.23.127.162", 8888)).channel();
+                    .connect(new InetSocketAddress("127.0.0.1", 9999)).channel();
             channels.set(index, channel);
         }
     }
@@ -93,7 +96,10 @@ public class MutiClient1 {
 //            String str = scanner.next();
             try {
                 Channel channel = mutiClient.next();
-                channel.writeAndFlush(str);
+                if(channel != null){
+                    channel.writeAndFlush(str);
+                }
+                Thread.sleep(1L);
             }catch (Exception e){
                 e.printStackTrace();
             }
